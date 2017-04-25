@@ -10,7 +10,7 @@ app.get('/db', function(request, response) {
         console.error(err);
         response.send("There was some error: " + err);
       } else {
-        response.render('pages/db', { results: results.rows});
+        response.render('pages/db', { results: result.rows});
       }
     });
   });
