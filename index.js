@@ -2,6 +2,9 @@ var pg = require('pg');
 var express = require('express');
 var app = express();
 
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+
 app.get('/db', function(request, response) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query('SELECT * FROM demo_table', function(err, result) {
