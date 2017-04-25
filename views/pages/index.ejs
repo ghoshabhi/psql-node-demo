@@ -1,16 +1,36 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Project N1</title>
   </head>
   <body>
+    <h2>Heroku PostgreSQL Demo</h2>
     <div class="container">
-      <h2>Database Results</h2>
-      <ul>
+      <table>
+        <thead>
+          <tr>
+            <td>ID</td>
+            <td>Name</td>
+          </tr>
+        </thead>
+        <tbody>
+           <% results.forEach(function(r) { %>
+            <tr>
+              <td><%= r.id %></td>
+              <td><%= r.name %></td>
+            </tr>
+           <% }); %>
+        </tbody>
+      </table>
+      <!--<ul>
         <% results.forEach(function(r) { %>
           <li><%= r.id %> - <%= r.name %></li>
         <% }); %>
-      </ul>
+      </ul>-->
     </div>
   </body>
 </html>
