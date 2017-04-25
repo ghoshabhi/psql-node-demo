@@ -1,4 +1,6 @@
 var pg = require('pg');
+var express = require('express');
+var app = express();
 
 app.get('/db', function(request, response) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
@@ -8,8 +10,14 @@ app.get('/db', function(request, response) {
         console.error(err);
         response.send("There was some error: " + err);
       } else {
-        response.render('/views/pages/db', { results: results.rows});
+        response.render('pages/db', { results: results.rows});
       }
     });
   });
+});
+
+const port = process.env.PORT || 3000;
+
+app.listen(port, function(){
+  console.log(`App Running on ${port}...`)
 });
