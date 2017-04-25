@@ -2,8 +2,7 @@ var pg = require('pg');
 var express = require('express');
 var app = express();
 
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
+app.set('view engine', 'ejs');
 
 app.get('/db', function(request, response) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
@@ -13,7 +12,7 @@ app.get('/db', function(request, response) {
         console.error(err);
         response.send("There was some error: " + err);
       } else {
-        response.render('pages/db', { results: result.rows});
+        response.render('pages/index', { results: result.rows});
       }
     });
   });
